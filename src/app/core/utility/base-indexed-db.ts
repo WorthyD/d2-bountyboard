@@ -5,9 +5,14 @@ export class BaseAppIndexedDb {
   dbVersion: number;
   storeIds: string[];
 
-  private db: Promise<IDBPDatabase>;
+  private db!: Promise<IDBPDatabase>;
 
-  constructor(name: string, dbVersion: number, storeIds: string[], initializeValues: boolean = true) {
+  constructor(
+    name: string,
+    dbVersion: number,
+    storeIds: string[],
+    initializeValues: boolean = true
+  ) {
     this.dbVersion = dbVersion;
     this.storeIds = storeIds;
 
@@ -30,7 +35,7 @@ export class BaseAppIndexedDb {
     });
   }
 
-  getById(store: string, id) {
+  getById(store: string, id: string) {
     return this.db.then((db) => {
       return db.transaction(store, 'readonly').objectStore(store).get(id);
     });
@@ -47,7 +52,7 @@ export class BaseAppIndexedDb {
   }
 
   purgeDatabase() {
-    return this.close().then((db) => {
+    return this.close()?.then((db) => {
       return deleteDB(this.name);
     });
   }

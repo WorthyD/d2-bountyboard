@@ -7,18 +7,19 @@ import { Destiny2Service } from 'bungie-api-angular';
 import { ManifestDatabaseService } from './manifest-database.service';
 
 import { CachedManifest } from '../models/CachedManifest';
-import { nowPlusMinutes } from './utility/date-utils';
+import { nowPlusMinutes } from '../utility/date-utils';
 
 export const STATUS_EXTRACTING_TABLES = 'extracting tables';
 export const STATUS_UNZIPPING = 'unzipping';
 export const STATUS_DONE = 'done';
 const MANIFEST_PATH_KEY = 'MANIFEST_PATH_KEY';
 const MANIFEST_PATH_EXP_KEY = 'MANIFEST_PATH_EXP_KEY';
+const MANIFEST_DATABASE_NAME = 'bounty-board-manifest';
 
 const VERSION = 'v1';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class DataService {
   constructor(
@@ -50,8 +51,7 @@ export class DataService {
   private getManifest(language: string) {
     return this.d2service.destiny2GetDestinyManifest().pipe(
       map((response) => {
-        // console.log(response.Response.jsonWorldContentPaths[language]);
-        return response.Response.jsonWorldContentPaths[language];
+        return response?.Response?.jsonWorldContentPaths?.[language] || '';
       })
     );
   }
@@ -64,14 +64,14 @@ export class DataService {
     return keys.reduce((acc: any, key: any) => {
       return {
         ...acc,
-        [key]: obj[key],
+        [key]: obj[key]
       };
     }, {});
   }
 
   requestDefinitionsArchive(dbPath: any, tableNames: any) {
     // TODO This takes about a second and a half to execute
-    return this.db.getValues('manifest').then((cachedValue) => {
+    return this.db.getValues(MANIFEST_DATABASE_NAME).then((cachedValue) => {
       const versionKey = `${VERSION}:${dbPath}`;
 
       if (
@@ -79,7 +79,7 @@ export class DataService {
         cachedValue.length > 0 &&
         cachedValue.find((x) => x.id === versionKey)
       ) {
-        this.db.closeDatabase('manifest');
+        this.db.closeDatabase(MANIFEST_DATABASE_NAME);
         return cachedValue.find((x) => x.id === versionKey);
       }
 
@@ -87,9 +87,11 @@ export class DataService {
         return x.json().then((y) => {
           const prunedTables = this.pruneTables(y, tableNames);
           const dbObject = { id: versionKey, data: prunedTables };
-          this.db.update('manifest', 'allData', [dbObject]).then((db) => {
-            this.db.closeDatabase('manifest');
-          });
+          this.db
+            .update(MANIFEST_DATABASE_NAME, 'allData', [dbObject])
+            .then((db) => {
+              this.db.closeDatabase(MANIFEST_DATABASE_NAME);
+            });
 
           return dbObject;
         });

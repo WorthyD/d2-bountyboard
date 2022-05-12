@@ -17,7 +17,7 @@ export class ApiKeyInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     // add the header to the cloned request
     const authReq = req.clone({
-      headers: req.headers.set('x-api-key', ''),
+      headers: req.headers.set('x-api-key', 'ebe6e29e62be48f98959ebd0a90974ef'),
     });
 
     return next.handle(authReq);

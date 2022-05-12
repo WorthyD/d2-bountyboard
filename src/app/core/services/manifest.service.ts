@@ -23,6 +23,7 @@ export class ManifestService {
 
   // TODO: Call for api/settings and look at destiny2CoreSettings
   loadManifest() {
+    console.log('loading manifest');
     console.time('loadManifest');
     const tables = [
       //            'DestinyChecklistDefinition',

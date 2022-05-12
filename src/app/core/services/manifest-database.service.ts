@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AppIndexedDb, StoreId } from './utility/app-indexed-db';
+import { AppIndexedDb, StoreId } from '../utility/app-indexed-db';
 
 @Injectable({
   providedIn: 'root',
