@@ -1,4 +1,4 @@
-import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ManifestService } from './services/manifest.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -25,5 +25,13 @@ export function initConfig(appConfig: ManifestService) {
   ]
 })
 export class CoreModule {
-  // TODO: add initializer thing
+  constructor(
+    @Optional()
+    @SkipSelf()
+    parentModule: CoreModule,
+) {
+    if (parentModule) {
+        throw new Error('CoreModule is already loaded. Import only in AppModule')
+    }
+}
 }
