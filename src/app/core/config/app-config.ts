@@ -1,13 +1,15 @@
-import { InjectionToken, ValueProvider } from '@angular/core'
+import { Injectable, InjectionToken, ValueProvider } from '@angular/core';
 
-export interface AppConfig {
-    production: boolean
-    apiURL: string
+export class AppConfig {
+  readonly production!: boolean;
+  readonly bungieAPIKey!: string;
+  readonly clientId!: string;
+  readonly appVersion!: string;
 }
 
-export const APP_CONFIG = new InjectionToken<AppConfig>('application.config')
+// export const APP_CONFIG = new InjectionToken<AppConfig>('application.config');
 
-export const getAppConfigProvider = (value: AppConfig): ValueProvider => ({
-    provide: APP_CONFIG,
-    useValue: value,
-})
+// export const getAppConfigProvider = (value: AppConfig): ValueProvider => ({
+//   provide: APP_CONFIG,
+//   useValue: value
+// });

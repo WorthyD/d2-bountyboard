@@ -1,15 +1,17 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import {
   HttpEvent,
   HttpInterceptor,
   HttpHandler,
-  HttpRequest,
+  HttpRequest
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { AppConfig } from '@core/config/app-config';
 
 @Injectable()
 export class ApiKeyInterceptor implements HttpInterceptor {
-  constructor() {}
+  // constructor(@Inject(APP_CONFIG) private appConfig: AppConfig) {}
+  constructor(private appConfig: AppConfig) {}
 
   intercept(
     req: HttpRequest<any>,
@@ -17,7 +19,7 @@ export class ApiKeyInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     // add the header to the cloned request
     const authReq = req.clone({
-      headers: req.headers.set('x-api-key', 'ebe6e29e62be48f98959ebd0a90974ef'),
+      headers: req.headers.set('x-api-key', this.appConfig.bungieAPIKey)
     });
 
     return next.handle(authReq);

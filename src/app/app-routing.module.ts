@@ -3,8 +3,16 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '',
-    loadChildren: () => import('./pages/login/login.module')
+    path: 'login',
+    loadChildren: () =>
+      import('./pages/login/login.module').then((m) => m.LoginModule)
+  },
+  {
+    path: 'login-callback',
+    loadChildren: () =>
+      import('./pages/login-callback/login-callback.module').then(
+        (m) => m.LoginCallbackModule
+      )
   }
 ];
 
