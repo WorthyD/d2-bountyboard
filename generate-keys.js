@@ -2,7 +2,7 @@ var fs = require('fs');
 
 const fileContents = `export const apiKeys = {
   apiKey: '${process.env.PROD_API_KEY}',
-  clientId: '240277',
+  clientId: '40277',
 };
 `;
 

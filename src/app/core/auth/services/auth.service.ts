@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AppConfig } from '@core/config/app-config';
 import { catchError, Observable, of, ReplaySubject } from 'rxjs';
@@ -39,6 +39,18 @@ export class AuthService {
       throw new Error('Stored state did not match query string state');
     }
 
+    let headers = new HttpHeaders();
+    const httpOptions = {
+      headers: headers
+        .set('x-api-key', this.appConfig.bungieAPIKey)
+        .set(
+          'authorization',
+          `Basic ${btoa(
+            `${this.appConfig.clientId}:${this.appConfig.clientSecret}`
+          )}`
+        )
+    };
+
     // HTTP interceptor will get api key
     let params = new HttpParams();
     params = params.set('grant_type', 'authorization_code');
@@ -46,7 +58,7 @@ export class AuthService {
     params = params.set('code', code);
 
     this.httpClient
-      .post(this.tokenUrl, params)
+      .post(this.tokenUrl, params, httpOptions)
       .pipe(
         take(1),
         map((result) => {
