@@ -32,15 +32,34 @@ export class AuthService {
 
   getTokenFromAPI(code: string, state: string) {
     const storedState: string = localStorage.getItem(STATE_KEY) || '';
-    console.log('stored', storedState);
-    console.log('state', state);
     if (storedState !== '' && storedState !== state) {
       localStorage.removeItem(STATE_KEY);
       throw new Error('Stored state did not match query string state');
     }
 
+    // HTTP interceptor will get api key
+    let params = new HttpParams();
+    params = params.set('grant_type', 'authorization_code');
+    params = params.set('client_id', this.clientId);
+    params = params.set('code', code);
+
+    this.httpClient
+      .post(this.tokenUrl, params, this.getHeaders())
+      .pipe(
+        take(1),
+        map((result) => {
+          this.saveToken(result as Token, true);
+        }),
+        catchError((error) => {
+          throw error;
+        })
+      )
+      .subscribe();
+  }
+
+  private getHeaders() {
     let headers = new HttpHeaders();
-    const httpOptions = {
+    return {
       headers: headers
         .set('x-api-key', this.appConfig.bungieAPIKey)
         .set(
@@ -50,28 +69,20 @@ export class AuthService {
           )}`
         )
     };
+  }
 
-    // HTTP interceptor will get api key
+  getRefreshTokenFromAPI() {
+    const refreshToken = this.token.refresh_token;
     let params = new HttpParams();
-    params = params.set('grant_type', 'authorization_code');
-    params = params.set('client_id', this.clientId);
-    params = params.set('code', code);
-
-    this.httpClient
-      .post(this.tokenUrl, params, httpOptions)
-      .pipe(
-        take(1),
-        map((result) => {
-          console.log('post result', result);
-          this.saveToken(result as Token);
-        }),
-        catchError((error) => {
-          console.log(error);
-
-          throw error;
-        })
-      )
-      .subscribe();
+    params = params.set('grant_type', 'refresh_token');
+    params = params.set('client_id', this.appConfig.clientId);
+    params = params.set('refresh_token', refreshToken);
+    return this.httpClient.post(this.tokenUrl, params, this.getHeaders()).pipe(
+      map((result) => {
+        this.saveToken(result as Token, true);
+        return result as Token;
+      })
+    );
   }
 
   getToken(): Observable<Token | null> {
@@ -87,6 +98,11 @@ export class AuthService {
         }
         return of(this.token);
       }
+
+      if (this.isRefreshTokenValid()) {
+        return this.getRefreshTokenFromAPI();
+      }
+
       // TODO: Refresh token?
       //throw new Error('Invalid token');
       this.signOut();
@@ -110,7 +126,10 @@ export class AuthService {
     const now: number = new Date().getTime();
     return now < this.token?.expiration;
   }
-
+  isRefreshTokenValid() {
+    const now: number = new Date().getTime();
+    return now < this.token?.expiration;
+  }
   signOut() {
     localStorage.removeItem(AUTH_KEY);
     this.token = null;
@@ -119,7 +138,7 @@ export class AuthService {
 
   private saveToken(newToken: Token, addTimeStamps: boolean = false) {
     if (addTimeStamps) {
-      this.addTokenTimestamps(newToken);
+      newToken = this.addTokenTimestamps(newToken);
     }
     localStorage.setItem(AUTH_KEY, JSON.stringify(newToken));
     this.token = newToken;
@@ -153,5 +172,7 @@ export class AuthService {
   private addTokenTimestamps(t: Token) {
     t.creation = new Date().getTime();
     t.expiration = t.expires_in * 1000 + t.creation;
+    t.refreshExpiration = t.refresh_expires_in * 1000 + t.creation;
+    return t;
   }
 }

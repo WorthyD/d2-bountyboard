@@ -7,6 +7,7 @@ export const environment = {
   production: false,
   bungieAPIKey: apiKeys.apiKey,
   clientId: apiKeys.clientId,
+  clientSecret: apiKeys.clientSecret,
   appVersion: packageJson.version
 };
 
