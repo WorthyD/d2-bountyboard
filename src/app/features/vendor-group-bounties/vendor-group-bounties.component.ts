@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { VendorGroupService } from '@core/definition-services/vendor-group.service';
 import { Destiny2Service } from 'bungie-api-angular';
-import { map } from 'rxjs';
+import { map, Observable } from 'rxjs';
+import { VendorGroupDisplay } from './interfaces/vendor-group-display';
+import { compare } from '@utilities/compare';
 
 @Component({
   selector: 'app-vendor-group-bounties',
@@ -20,7 +22,7 @@ export class VendorGroupBountiesComponent implements OnInit {
     private destiny2Service: Destiny2Service
   ) {}
 
-  data$;
+  data$: Observable<VendorGroupDisplay[]>;
 
   ngOnInit(): void {
     //this.data$ = this.destiny2Service.destiny2GetPublicVendors([400]);
@@ -33,7 +35,26 @@ export class VendorGroupBountiesComponent implements OnInit {
       )
       .pipe(
         map((response) => {
-          return response.Response.vendorGroups.data.groups;
+          return response.Response.vendorGroups.data.groups.map(
+            (vendorGroup) => {
+              return {
+                vendorGroup: vendorGroup,
+                vendorDefinition:
+                  this.vendorGroupService.definitions[
+                    vendorGroup.vendorGroupHash
+                  ]
+              };
+            }
+          );
+        }),
+        map((vendorGroupDisplays) => {
+          return vendorGroupDisplays.sort((a, b) => {
+            return compare(
+              a.vendorDefinition.order,
+              b.vendorDefinition.order,
+              true
+            );
+          });
         })
       );
   }

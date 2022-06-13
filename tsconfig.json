@@ -8,7 +8,8 @@
       "@core/*": ["src/app/core/*"],
       "@features/*": ["src/app/features/*"],
       "@shared/*": ["src/app/shared/*"],
-      "@environment/*": ["src/environments/*"]
+      "@environment/*": ["src/environments/*"],
+      "@utilities/*": ["src/app/utilities/*"]
     },
     "forceConsistentCasingInFileNames": true,
     "strict": false,

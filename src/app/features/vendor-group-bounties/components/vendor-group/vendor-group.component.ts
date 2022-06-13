@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { VendorGroupService } from '@core/definition-services/vendor-group.service';
+import { VendorGroupDisplay } from '@features/vendor-group-bounties/interfaces/vendor-group-display';
 
 import { DestinyDefinitionsDestinyVendorGroupDefinition } from 'bungie-api-angular';
 @Component({
@@ -9,13 +10,13 @@ import { DestinyDefinitionsDestinyVendorGroupDefinition } from 'bungie-api-angul
 })
 export class VendorGroupComponent implements OnInit {
   @Input()
-  vendorGroupHash: number;
+  vendorGroupDisplay: VendorGroupDisplay;
 
   definition: DestinyDefinitionsDestinyVendorGroupDefinition;
   constructor(private vendorGroupService: VendorGroupService) {}
 
   ngOnInit(): void {
     console.log(this.vendorGroupService.definitions);
-    this.definition = this.vendorGroupService.definitions[this.vendorGroupHash];
+    //this.definition = this.vendorGroupService.definitions[this.vendorGroupHash];
   }
 }

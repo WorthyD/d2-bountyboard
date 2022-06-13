@@ -1,9 +1,9 @@
-<p>vendor-group-bounties works!</p>
+<!-- <p>vendor-group-bounties works!</p>
 <pre>
 {{(data$ | async) | json}}
-</pre>
+</pre> -->
 
 <ng-container *ngFor="let vendorGroup of data$ | async">
-  <app-vendor-group [vendorGroupHash]="vendorGroup.vendorGroupHash"></app-vendor-group>
+  <app-vendor-group [vendorGroupDisplay]="vendorGroup"></app-vendor-group>
 
 </ng-container>
