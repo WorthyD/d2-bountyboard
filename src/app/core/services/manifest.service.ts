@@ -8,18 +8,18 @@ import { Injectable } from '@angular/core';
 //   PresentationNodeDefinitionService,
 // } from '@destiny/data';
 import { DataService } from './data.service';
+import { VendorService } from '../definition-services/vendor.service';
+import { VendorGroupService } from '../definition-services/vendor-group.service';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class ManifestService {
   constructor(
-    private data: DataService
-  ) // private activityService: ActivitiesService,
-  // private activityModeService: ActivityModeService,
-  // private milestoneDefinitionService: MilestoneDefinitionService,
-  // private presentationNodeDefinitionService: PresentationNodeDefinitionService
-  {}
+    private data: DataService,
+    private vendorService: VendorService, // private activityService: ActivitiesService, // private activityModeService: ActivityModeService, // private milestoneDefinitionService: MilestoneDefinitionService, // private presentationNodeDefinitionService: PresentationNodeDefinitionService
+    private vendorGroupService: VendorGroupService
+  ) {}
 
   // TODO: Call for api/settings and look at destiny2CoreSettings
   loadManifest() {
@@ -29,19 +29,20 @@ export class ManifestService {
       //            'DestinyChecklistDefinition',
       //            'DestinyObjectiveDefinition',
       //'DestinyStatDefinition',
-      //            'DestinyVendorDefinition',
+      'DestinyVendorDefinition',
+      'DestinyVendorGroupDefinition'
       //            'DestinyInventoryItemDefinition',
       //            'DestinyClassDefinition',
       //            'DestinySandboxPerkDefinition',
       //            'DestinyEnergyTypeDefinition',
       //'DestinyCollectibleDefinition',
-      'DestinyPresentationNodeDefinition',
+      //'DestinyPresentationNodeDefinition',
       //'DestinyRecordDefinition',
-      'DestinySeasonDefinition',
+      //'DestinySeasonDefinition',
       //'DestinySeasonPassDefinition',
-      'DestinyMilestoneDefinition',
-      'DestinyActivityDefinition',
-      'DestinyActivityModeDefinition',
+      //'DestinyMilestoneDefinition',
+      //'DestinyActivityDefinition',
+      //'DestinyActivityModeDefinition',
       //            'DestinyPlaceDefinition',
       //            'DestinyFactionDefinition'
     ];
@@ -49,6 +50,15 @@ export class ManifestService {
       .loadManifestData('en', tables)
       .then((x) => {
         if (x && x.data) {
+          if (x.data.DestinyVendorDefinition) {
+            this.vendorService.initializeCache(x.data.DestinyVendorDefinition);
+          }
+          if (x.data.DestinyVendorGroupDefinition) {
+            this.vendorGroupService.initializeCache(
+              x.data.DestinyVendorGroupDefinition
+            );
+          }
+
           // if (x.data.DestinyActivityModeDefinition) {
           //   this.activityModeService.initializeCache(
           //     x.data.DestinyActivityModeDefinition

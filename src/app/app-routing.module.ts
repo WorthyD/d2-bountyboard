@@ -1,7 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CanActivateRouteGuard } from '@core/guards/is-logged-in.guard';
 
 const routes: Routes = [
+  {
+    path: '',
+    canActivate: [CanActivateRouteGuard],
+    loadChildren: () =>
+      import('./pages/home/home.module').then((m) => m.HomeModule)
+  },
+  {
+    path: ':membershipType/:membershipId/:characterId',
+    canActivate: [CanActivateRouteGuard],
+    loadChildren: () =>
+      import('./pages/vendors/vendors.module').then((m) => m.VendorsModule)
+  },
   {
     path: 'login',
     loadChildren: () =>

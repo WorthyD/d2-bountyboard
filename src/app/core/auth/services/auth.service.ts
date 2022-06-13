@@ -1,4 +1,9 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpHeaders,
+  HttpParams,
+  HttpBackend
+} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AppConfig } from '@core/config/app-config';
 import { catchError, Observable, of, ReplaySubject } from 'rxjs';
@@ -19,8 +24,10 @@ export class AuthService {
 
   private authSubject = new ReplaySubject();
   public authInfo$!: Observable<AuthInfo>;
-
-  constructor(private httpClient: HttpClient, private appConfig: AppConfig) {}
+  private httpClient: HttpClient;
+  constructor(private httpBackend: HttpBackend, private appConfig: AppConfig) {
+    this.httpClient = new HttpClient(httpBackend);
+  }
 
   clientId = this.appConfig.clientId;
   redirectToLogin() {
@@ -71,28 +78,32 @@ export class AuthService {
     };
   }
 
-  getRefreshTokenFromAPI() {
+  getRefreshTokenFromAPI$(): Observable<Token> {
     const refreshToken = this.token.refresh_token;
     let params = new HttpParams();
     params = params.set('grant_type', 'refresh_token');
     params = params.set('client_id', this.appConfig.clientId);
     params = params.set('refresh_token', refreshToken);
+    console.log('refreshing');
     return this.httpClient.post(this.tokenUrl, params, this.getHeaders()).pipe(
       map((result) => {
+        console.log('refreshing2');
         this.saveToken(result as Token, true);
         return result as Token;
       })
     );
   }
 
-  getToken(): Observable<Token | null> {
+  getToken$(): Observable<Token> {
     let loadedFromLocal = false;
-    if (this.token === null) {
+    if (this.token === null || this.token === undefined) {
+      console.log('getting token from local storage');
       this.token = this.getTokenFromLocalStorage();
       loadedFromLocal = true;
     }
     if (this.token) {
       if (this.isTokenValid()) {
+        console.log('token is valid');
         if (loadedFromLocal) {
           this.saveToken(this.token);
         }
@@ -100,24 +111,35 @@ export class AuthService {
       }
 
       if (this.isRefreshTokenValid()) {
-        return this.getRefreshTokenFromAPI();
+        console.log('logging refresh token');
+        return this.getRefreshTokenFromAPI$();
       }
 
       // TODO: Refresh token?
-      //throw new Error('Invalid token');
+      throw new Error('Invalid token signing out');
       this.signOut();
     }
 
     return of(null);
   }
 
-  getMemberId(): Observable<string> {
-    return this.getToken().pipe(
+  getMemberId$(): Observable<string> {
+    return this.getToken$().pipe(
       map((token) => {
+        console.log('token', token);
         if (token) {
           return token.membership_id;
         }
         return '';
+      })
+    );
+  }
+
+  isLoggedIn$(): Observable<boolean> {
+    return this.getToken$().pipe(
+      map((token) => {
+        console.log('token', token);
+        return token !== null;
       })
     );
   }
@@ -128,7 +150,7 @@ export class AuthService {
   }
   isRefreshTokenValid() {
     const now: number = new Date().getTime();
-    return now < this.token?.expiration;
+    return now < this.token?.refreshExpiration;
   }
   signOut() {
     localStorage.removeItem(AUTH_KEY);

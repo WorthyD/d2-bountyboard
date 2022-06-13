@@ -1,0 +1,85 @@
+{
+  "access": {
+    "value": "CIySBBKGAgAgIJN/v69ZYglMF69QZQvrmp67V8uEyD7utFr0zsO5mYPgAAAA0PFgE8hMhcS3p0Z48/yA5MPmVa3u3RsPDEts23lIRGjYGtdtPl0R5ZhMStfeeXUZx/1DislyeGqDh+8BftxEWK5FJZDD//w5IsC5nZ5JwYpD5qb6x5CAfOHEVqH2/gqnHrq0wYY2F2axTx9ZVl83PTGq1zoNdJjbyqlsflHzNzTZ2l9YEPi+7bVYCvnhZG0/M7hrdaE+DHkPdRhTGreUYRnDmV1j5q5GZ4lB12sCac3xa+d3sNvoUeL8dpJv0m5MVyHWhLHDnshMgS4O/kQ2mDaXInhZJrhqYsmFgXhSKWo=",
+    "expires": 1652664490283
+  },
+  "refresh": {
+    "value": "CIySBBKGAgAgWyH6Z3IhV5sC81iwRXKCXINiD0sMcHkp3zk5onaacN/gAAAAZ7Ra5ZwoacYm5lv8MAAC2tyQK2GKFjuJhQ1JWoeDwQPOd5+xq1J0DC9Ya3V7qxOsCBbs8osxA8dj3eLI6zMzuqhm9Q95rIuOUPtAiG6tjw/eiGFmyvd8ErMo6/YSgdnRa7r+XsBM2kdRj4WG2Huu/PJznKAQuIlwEMqWNXY2IPLZMOjVr62gjyKryjM6c7mo1wL6icXo2CTWzyL5YX2mv1Ysj7CWsH6CarHqjnS37kCSvcTRLZ/71KQ5+8CzdzV0BMAMck2i8qv4/oXDe1QFtgEqG2qafUU9YR2SLEKHlXk=",
+    "expires": 1660436890283
+  },
+  "bnetMembershipId": "612698",
+  "bungieNetUser": {
+    "membershipId": "612698",
+    "uniqueName": "WorthyD#2742",
+    "displayName": "WorthyD",
+    "profilePicture": 70319,
+    "profileTheme": 1127,
+    "userTitle": 0,
+    "successMessageFlags": "0",
+    "isDeleted": false,
+    "about": "Dad, Web Programmer, Wanna Be Gamer",
+    "firstAccess": "2009-11-21T15:17:08.447Z",
+    "lastUpdate": "2021-08-25T13:34:10.725Z",
+    "context": {
+      "isFollowing": false,
+      "ignoreStatus": { "isIgnored": false, "ignoreFlags": 0 }
+    },
+    "psnDisplayName": "WorthyD",
+    "xboxDisplayName": "WorthyD3136",
+    "showActivity": true,
+    "locale": "en",
+    "localeInheritDefault": true,
+    "showGroupMessaging": true,
+    "profilePicturePath": "/img/profile/avatars/odst_buck.gif",
+    "profileThemeName": "d2_27",
+    "userTitleDisplay": "Newbie",
+    "statusText": "",
+    "statusDate": "0001-01-01T00:00:00Z",
+    "blizzardDisplayName": "WorthyD",
+    "steamDisplayName": "WorthyD",
+    "twitchDisplayName": "WorthyD",
+    "cachedBungieGlobalDisplayName": "WorthyD",
+    "cachedBungieGlobalDisplayNameCode": 2742
+  },
+  "destinyMemberships": [
+    {
+      "LastSeenDisplayName": "WorthyD",
+      "LastSeenDisplayNameType": 3,
+      "iconPath": "/img/theme/bungienet/icons/steamLogo.png",
+      "crossSaveOverride": 3,
+      "applicableMembershipTypes": [1, 2, 3],
+      "isPublic": true,
+      "membershipType": 3,
+      "membershipId": "4611686018467238913",
+      "displayName": "WorthyD",
+      "bungieGlobalDisplayName": "WorthyD",
+      "bungieGlobalDisplayNameCode": 2742
+    },
+    {
+      "LastSeenDisplayName": "WorthyD3136",
+      "LastSeenDisplayNameType": 1,
+      "iconPath": "/img/theme/bungienet/icons/xboxLiveLogo.png",
+      "crossSaveOverride": 3,
+      "applicableMembershipTypes": [],
+      "isPublic": true,
+      "membershipType": 1,
+      "membershipId": "4611686018467197733",
+      "displayName": "WorthyD3136",
+      "bungieGlobalDisplayName": "WorthyD",
+      "bungieGlobalDisplayNameCode": 2742
+    },
+    {
+      "LastSeenDisplayName": "WorthyD",
+      "LastSeenDisplayNameType": 2,
+      "iconPath": "/img/theme/bungienet/icons/psnLogo.png",
+      "crossSaveOverride": 3,
+      "applicableMembershipTypes": [],
+      "isPublic": true,
+      "membershipType": 2,
+      "membershipId": "4611686018464493151",
+      "displayName": "WorthyD",
+      "bungieGlobalDisplayName": "WorthyD",
+      "bungieGlobalDisplayNameCode": 2742
+    }
+  ]
+}

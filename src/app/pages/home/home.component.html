@@ -1,0 +1,20 @@
+<p>home works!</p>
+
+
+<ng-container *ngIf="characters$ | async as characters">
+  <div *ngFor="let character of characters">
+    <a routerLink="/{{character.membershipType}}/{{character.membershipId}}/{{character.characterId}}">
+      {{character.characterId}}
+    </a>
+    <button (click)="selectCharacter(character)">
+
+      {{character.characterId}}
+    </button>
+  </div>
+
+</ng-container>
+
+<pre>
+{{(data$ | async) | json}}
+
+</pre>

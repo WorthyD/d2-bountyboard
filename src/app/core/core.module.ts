@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ManifestService } from './services/manifest.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ApiKeyInterceptor } from './interceptors/apikey.interceptor';
+import { AuthInterceptor } from './interceptors/auth.interceptors';
 import { environment } from '@environment/environment';
 import { AppConfig } from './config/app-config';
 
@@ -16,6 +17,11 @@ export function initConfig(appConfig: ManifestService) {
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ApiKeyInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
       multi: true
     },
     {

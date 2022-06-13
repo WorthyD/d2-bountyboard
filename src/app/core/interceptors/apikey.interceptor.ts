@@ -10,7 +10,6 @@ import { AppConfig } from '@core/config/app-config';
 
 @Injectable()
 export class ApiKeyInterceptor implements HttpInterceptor {
-  // constructor(@Inject(APP_CONFIG) private appConfig: AppConfig) {}
   constructor(private appConfig: AppConfig) {}
 
   intercept(

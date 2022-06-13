@@ -1,0 +1,279 @@
+{
+  "saleItems": {
+    "0": {
+      "saleStatus": 0,
+      "failureIndexes": [],
+      "augments": 0,
+      "itemValueVisibility": [true, true, true, true, true, true],
+      "vendorItemIndex": 0,
+      "itemHash": 2910071312, //Additional bounties
+      "quantity": 1,
+      "costs": [
+        {
+          "itemHash": 3159615086, // Glimmer
+          "quantity": 3000,
+          "hasConditionalVisibility": false
+        }
+      ],
+      "apiPurchasable": true
+    },
+    "4": {
+      "saleStatus": 0,
+      "failureIndexes": [],
+      "augments": 0,
+      "vendorItemIndex": 4,
+      "itemHash": 4040456076, // Vanguar dtactitian aromor
+      "quantity": 1,
+      "costs": []
+    },
+    "5": {
+      "saleStatus": 0,
+      "failureIndexes": [],
+      "augments": 0,
+      "vendorItemIndex": 5,
+      "itemHash": 1616736576, // Vanguard Tactician Arsenal
+      "quantity": 1,
+      "costs": []
+    },
+    "43": {
+      "saleStatus": 0,
+      "failureIndexes": [],
+      "augments": 0,
+      "vendorItemIndex": 43,
+      "itemHash": 2390666069,  // Quest
+      "quantity": 1,
+      "costs": []
+    },
+    "115": {
+      "saleStatus": 8,
+      "failureIndexes": [12],
+      "augments": 0,
+      "vendorItemIndex": 115,
+      "itemHash": 671664021,  // Gloves
+      "quantity": 1,
+      "costs": [
+        {
+          "itemHash": 1022552290,
+          "quantity": 25,
+          "hasConditionalVisibility": false
+        },
+        {
+          "itemHash": 3159615086,
+          "quantity": 1000,
+          "hasConditionalVisibility": false
+        }
+      ]
+    },
+    "116": {
+      "saleStatus": 8,
+      "failureIndexes": [12],
+      "augments": 0,
+      "vendorItemIndex": 116,
+      "itemHash": 1080431755,    // Robes
+      "quantity": 1,
+      "costs": [
+        {
+          "itemHash": 1022552290,
+          "quantity": 25,
+          "hasConditionalVisibility": false
+        },
+        {
+          "itemHash": 3159615086,
+          "quantity": 1000,
+          "hasConditionalVisibility": false
+        }
+      ]
+    },
+    "117": {
+      "saleStatus": 8,
+      "failureIndexes": [12],
+      "augments": 0,
+      "vendorItemIndex": 117,
+      "itemHash": 4156676002,   /// bond
+      "quantity": 1,
+      "costs": [
+        {
+          "itemHash": 1022552290,
+          "quantity": 25,
+          "hasConditionalVisibility": false
+        },
+        {
+          "itemHash": 3159615086,
+          "quantity": 1000,
+          "hasConditionalVisibility": false
+        }
+      ]
+    },
+    "118": {
+      "saleStatus": 8,
+      "failureIndexes": [12],
+      "augments": 0,
+      "vendorItemIndex": 118,
+      "itemHash": 3611754012,    // Hood
+      "quantity": 1,
+      "costs": [
+        {
+          "itemHash": 1022552290,
+          "quantity": 25,
+          "hasConditionalVisibility": false
+        },
+        {
+          "itemHash": 3159615086,
+          "quantity": 1000,
+          "hasConditionalVisibility": false
+        }
+      ]
+    },
+    "119": {
+      "saleStatus": 8,
+      "failureIndexes": [12],
+      "augments": 0,
+      "vendorItemIndex": 119,
+      "itemHash": 2713820407,   /// boots
+      "quantity": 1,
+      "costs": [
+        {
+          "itemHash": 1022552290,
+          "quantity": 25,
+          "hasConditionalVisibility": false
+        },
+        {
+          "itemHash": 3159615086,
+          "quantity": 1000,
+          "hasConditionalVisibility": false
+        }
+      ]
+    },
+    "122": {
+      "saleStatus": 0,
+      "failureIndexes": [],
+      "augments": 16384,
+      "vendorItemIndex": 122,
+      "itemHash": 277576667,  // Powerful gear
+      "quantity": 1,
+      "costs": []
+    },
+    "123": {
+      "saleStatus": 0,
+      "failureIndexes": [],
+      "augments": 16384,
+      "vendorItemIndex": 123,
+      "itemHash": 3853748946,
+      "quantity": 3,
+      "costs": []
+    },
+    "125": {
+      "saleStatus": 8,
+      "failureIndexes": [16],
+      "augments": 0,
+      "vendorItemIndex": 125,
+      "itemHash": 1619668808,
+      "quantity": 1,
+      "costs": []
+    },
+    "127": {
+      "saleStatus": 9,
+      "failureIndexes": [17],
+      "augments": 0,
+      "vendorItemIndex": 127,
+      "itemHash": 4257549984,
+      "quantity": 2,
+      "costs": []
+    },
+    "129": {
+      "saleStatus": 8,
+      "failureIndexes": [18],
+      "augments": 0,
+      "vendorItemIndex": 129,
+      "itemHash": 503394676,
+      "quantity": 1,
+      "costs": []
+    },
+    "131": {
+      "saleStatus": 8,
+      "failureIndexes": [19],
+      "augments": 0,
+      "vendorItemIndex": 131,
+      "itemHash": 3216652511,
+      "quantity": 1,
+      "costs": []
+    },
+    "134": {
+      "saleStatus": 8,
+      "failureIndexes": [20, 21],
+      "augments": 0,
+      "vendorItemIndex": 134,
+      "itemHash": 2133694745,
+      "quantity": 1,
+      "costs": []
+    },
+    "137": {
+      "saleStatus": 0,
+      "failureIndexes": [],
+      "augments": 0,
+      "vendorItemIndex": 137,
+      "itemHash": 4108896452,
+      "quantity": 1,
+      "costs": [
+        {
+          "itemHash": 3159615086,
+          "quantity": 250,
+          "hasConditionalVisibility": false
+        }
+      ],
+      "overrideNextRefreshDate": "2022-05-20T17:00:00Z",
+      "apiPurchasable": true
+    },
+    "139": {   // ----------------------- Below are abounties
+      "saleStatus": 0,
+      "failureIndexes": [],
+      "augments": 0,
+      "vendorItemIndex": 139,
+      "itemHash": 813428809,
+      "quantity": 1,
+      "costs": [
+        {
+          "itemHash": 3159615086,
+          "quantity": 250,
+          "hasConditionalVisibility": false
+        }
+      ],
+      "overrideNextRefreshDate": "2022-05-20T17:00:00Z",
+      "apiPurchasable": true
+    },
+    "143": {
+      "saleStatus": 0,
+      "failureIndexes": [],
+      "augments": 0,
+      "vendorItemIndex": 143,
+      "itemHash": 2987639079,
+      "quantity": 1,
+      "costs": [
+        {
+          "itemHash": 3159615086,
+          "quantity": 250,
+          "hasConditionalVisibility": false
+        }
+      ],
+      "overrideNextRefreshDate": "2022-05-20T17:00:00Z",
+      "apiPurchasable": true
+    },
+    "153": {
+      "saleStatus": 0,
+      "failureIndexes": [],
+      "augments": 0,
+      "vendorItemIndex": 153,
+      "itemHash": 1683584740,
+      "quantity": 1,
+      "costs": [
+        {
+          "itemHash": 3159615086,
+          "quantity": 250,
+          "hasConditionalVisibility": false
+        }
+      ],
+      "overrideNextRefreshDate": "2022-05-20T17:00:00Z",
+      "apiPurchasable": true
+    }
+  }
+}
