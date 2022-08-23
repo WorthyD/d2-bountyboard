@@ -31,7 +31,7 @@ export class VendorGroupBountiesComponent implements OnInit {
         this.characterId as unknown as number,
         this.membershipId as unknown as number,
         this.membershipType,
-        [400]
+        [400, 401, 402]
       )
       .pipe(
         map((response) => {

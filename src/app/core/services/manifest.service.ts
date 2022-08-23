@@ -47,7 +47,8 @@ export class ManifestService {
       //            'DestinyFactionDefinition'
     ];
     return this.data
-      .loadManifestData('en', tables)
+       .loadManifestData('en', tables)
+      //.loadManifestData('fr', tables)
       .then((x) => {
         if (x && x.data) {
           if (x.data.DestinyVendorDefinition) {

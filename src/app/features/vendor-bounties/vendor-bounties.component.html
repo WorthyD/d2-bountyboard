@@ -1,0 +1,12 @@
+<h2>{{definition.displayProperties.name}}</h2>
+<!-- <ng-container *ngIf="definition.displayProperties.name === 'Commandant Zavala'"> -->
+<ng-container *ngIf="definition.displayProperties.name === 'Commander Zavala'">
+  <div style="height:400px;overflow:scroll">
+    <pre>
+{{definition | json}}
+</pre>
+  </div>
+</ng-container>
+<!-- <pre>
+{{definition | json}}
+</pre> -->
