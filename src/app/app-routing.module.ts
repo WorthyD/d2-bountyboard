@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CanActivateRouteGuard } from '@core/guards/is-logged-in.guard';
+import { CanActivateRouteGuard,  } from '@core/guards/is-logged-in.guard';
+import { VendorResolveGuard } from '@core/guards/vendors-resolve.guard';
 
 const routes: Routes = [
   {
@@ -11,7 +12,7 @@ const routes: Routes = [
   },
   {
     path: ':membershipType/:membershipId/:characterId',
-    canActivate: [CanActivateRouteGuard],
+    canActivate: [CanActivateRouteGuard, VendorResolveGuard],
     loadChildren: () =>
       import('./pages/vendors/vendors.module').then((m) => m.VendorsModule)
   },

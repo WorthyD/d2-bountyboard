@@ -12,50 +12,46 @@ import { compare } from '@utilities/compare';
 })
 export class VendorGroupBountiesComponent implements OnInit {
   @Input()
-  membershipId: bigint;
+  isLoading: boolean = false;
+
+  _vendorGroups;
   @Input()
-  membershipType: number;
-  @Input()
-  characterId: bigint;
-  constructor(
-    private vendorGroupService: VendorGroupService,
-    private destiny2Service: Destiny2Service
-  ) {}
+  get vendorGroups() {
+    return this._vendorGroups;
+  }
+  set vendorGroups(data) {
+    this._vendorGroups = data;
+    if (data) {
+      this.joinVendorGroups(data);
+    }
+  }
+
+  vendorGroupDisplay: VendorGroupDisplay[];
+
+  joinVendorGroups(vendorGroups: any) {
+    const temp = vendorGroups?.data?.groups.map((vendorGroup) => {
+      return {
+        vendorGroup: vendorGroup,
+        vendorDefinition: this.vendorGroupService.definitions[vendorGroup.vendorGroupHash] || {
+          blacklisted: false,
+          categoryName: '??',
+          hash: vendorGroup.vendorGroupHash,
+          index: 99,
+          order: 99,
+          redacted: false
+        }
+      };
+    });
+
+    this.vendorGroupDisplay = temp.sort((a, b) => {
+      return compare(a.vendorDefinition.order, b.vendorDefinition.order, true);
+    });
+  }
+
+  constructor(private vendorGroupService: VendorGroupService) {}
 
   data$: Observable<VendorGroupDisplay[]>;
 
   ngOnInit(): void {
-    //this.data$ = this.destiny2Service.destiny2GetPublicVendors([400]);
-    this.data$ = this.destiny2Service
-      .destiny2GetVendors(
-        this.characterId as unknown as number,
-        this.membershipId as unknown as number,
-        this.membershipType,
-        [400, 401, 402]
-      )
-      .pipe(
-        map((response) => {
-          return response.Response.vendorGroups.data.groups.map(
-            (vendorGroup) => {
-              return {
-                vendorGroup: vendorGroup,
-                vendorDefinition:
-                  this.vendorGroupService.definitions[
-                    vendorGroup.vendorGroupHash
-                  ]
-              };
-            }
-          );
-        }),
-        map((vendorGroupDisplays) => {
-          return vendorGroupDisplays.sort((a, b) => {
-            return compare(
-              a.vendorDefinition.order,
-              b.vendorDefinition.order,
-              true
-            );
-          });
-        })
-      );
   }
 }

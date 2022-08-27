@@ -1,3 +1,15 @@
+//displayCategories {
+//   "index": 5,
+//   "identifier": "category_bounties",
+//   "displayCategoryHash": 1780344149,
+//   "displayProperties": {
+//     "description": "",
+//     "name": "Bounties",
+//     "hasIcon": false
+//   },
+//   "displayInBanner": false,
+//   "sortOrder": 0
+// },
 {"data": {
   "69482069": { // Zavala
     "categories": [

@@ -3,7 +3,20 @@
 {{(data$ | async) | json}}
 </pre> -->
 
-<ng-container *ngFor="let vendorGroup of data$ | async">
+<!-- <ng-container *ngFor="let vendorGroup of data$ | async">
+  <app-vendor-group [vendorGroupDisplay]="vendorGroup"></app-vendor-group>
+
+</ng-container> -->
+
+<ng-container *ngFor="let vendorGroup of vendorGroupDisplay">
+
   <app-vendor-group [vendorGroupDisplay]="vendorGroup"></app-vendor-group>
 
 </ng-container>
+
+<!--
+  TODO:
+  Load Vendors into state
+  Load Categories into state
+  Load Sales into state.
+-->

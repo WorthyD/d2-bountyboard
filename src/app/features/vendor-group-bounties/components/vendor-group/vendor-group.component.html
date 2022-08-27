@@ -1,10 +1,10 @@
 <div>
-  {{vendorGroupDisplay.vendorDefinition.categoryName}} -
-  {{vendorGroupDisplay.vendorDefinition.order}}
+  {{vendorGroupDisplay.vendorDefinition?.categoryName}} -
+  {{vendorGroupDisplay.vendorDefinition?.order}}
 
   <ul *ngIf="vendorGroupDisplay.vendorGroup.vendorHashes">
     <ng-container *ngFor="let vendor of vendorGroupDisplay.vendorGroup.vendorHashes">
-      <li>{{vendor}}
+      <li>
         <app-vendor-bounties [vendorHash]="vendor.toString()"></app-vendor-bounties>
       </li>
 

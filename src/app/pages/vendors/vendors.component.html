@@ -1,6 +1,13 @@
-<p>vendors works!</p>
+<!-- <p>vendors works!</p>
 {{membershipId}} |
 {{membershipType}} |
 {{characterId}}
-<app-vendor-group-bounties [membershipId]="membershipId" [membershipType]="membershipType" [characterId]="characterId">
+
+<pre>
+<code>
+{{(vendors$ | async) | json}}
+</code>
+</pre> -->
+
+<app-vendor-group-bounties [isLoading]="vendorsLoading$ | async" [vendorGroups]="vendors$ | async">
 </app-vendor-group-bounties>

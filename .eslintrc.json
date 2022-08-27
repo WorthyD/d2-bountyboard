@@ -3,7 +3,8 @@
   "ignorePatterns": [
     "projects/**/*"
   ],
-  "overrides": [{
+  "overrides": [
+    {
       "files": [
         "*.ts"
       ],
@@ -43,7 +44,12 @@
             "ignoreCase": false,
             "ignoreDeclarationSort": false,
             "ignoreMemberSort": false,
-            "memberSyntaxSortOrder": ["none", "all", "multiple", "single"],
+            "memberSyntaxSortOrder": [
+              "none",
+              "all",
+              "multiple",
+              "single"
+            ],
             "allowSeparatedGroups": false
           }
         ]
@@ -57,6 +63,14 @@
         "plugin:@angular-eslint/template/recommended"
       ],
       "rules": {}
+    },
+    {
+      "files": [
+        "*.ts"
+      ],
+      "extends": [
+        "plugin:@ngrx/recommended-requiring-type-checking"
+      ]
     }
   ]
 }

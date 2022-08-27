@@ -16,7 +16,7 @@ export class VendorGroupComponent implements OnInit {
   constructor(private vendorGroupService: VendorGroupService) {}
 
   ngOnInit(): void {
-    console.log(this.vendorGroupService.definitions);
+    //console.log(this.vendorGroupService.definitions);
     //this.definition = this.vendorGroupService.definitions[this.vendorGroupHash];
   }
 }

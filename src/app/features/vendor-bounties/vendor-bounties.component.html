@@ -1,12 +1,28 @@
-<h2>{{definition.displayProperties.name}}</h2>
+<h2>{{definition?.displayProperties.name}} - {{vendorHash}}</h2>
 <!-- <ng-container *ngIf="definition.displayProperties.name === 'Commandant Zavala'"> -->
-<ng-container *ngIf="definition.displayProperties.name === 'Commander Zavala'">
+<ng-container *ngIf="definition?.displayProperties.name === 'Commander Zavala'">
   <div style="height:400px;overflow:scroll">
     <pre>
 {{definition | json}}
 </pre>
   </div>
 </ng-container>
+  <pre>{{(itemIndexes$ | async) | json}}</pre>
 <!-- <pre>
 {{definition | json}}
-</pre> -->
+</pre>
+
+  {
+      "index": 5,
+      "identifier": "category_bounties",
+      "displayCategoryHash": 1780344149,
+      "displayProperties": {
+        "description": "",
+        "name": "Bounties",
+        "hasIcon": false
+      },
+      "displayInBanner": false,
+      "sortOrder": 0
+    }
+
+-->

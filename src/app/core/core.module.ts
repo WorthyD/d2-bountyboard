@@ -6,13 +6,22 @@ import { ApiKeyInterceptor } from './interceptors/apikey.interceptor';
 import { AuthInterceptor } from './interceptors/auth.interceptors';
 import { environment } from '@environment/environment';
 import { AppConfig } from './config/app-config';
-
+import { coreEffects, coreReducers } from './core.state';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 export function initConfig(appConfig: ManifestService) {
   return () => appConfig.loadManifest();
 }
 @NgModule({
   declarations: [],
-  imports: [CommonModule, HttpClientModule],
+  imports: [
+    CommonModule,
+    HttpClientModule,
+    StoreModule.forRoot(coreReducers),
+    EffectsModule.forRoot(coreEffects),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
+  ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
