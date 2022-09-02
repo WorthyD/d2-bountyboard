@@ -26,6 +26,9 @@ export class VendorGroupBountiesComponent implements OnInit {
     }
   }
 
+  @Input()
+  categories;
+
   vendorGroupDisplay: VendorGroupDisplay[];
 
   joinVendorGroups(vendorGroups: any) {
@@ -52,6 +55,5 @@ export class VendorGroupBountiesComponent implements OnInit {
 
   data$: Observable<VendorGroupDisplay[]>;
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 }

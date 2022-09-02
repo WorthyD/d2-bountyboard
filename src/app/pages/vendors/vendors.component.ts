@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { selectVendors, selectVendorsGroups, selectVendorsLoading } from '@core/store/vendor/vendor.selectors';
+import {
+  selectVendors,
+  selectCategories,
+  selectVendorCategories,
+  selectVendorsGroups,
+  selectVendorsLoading
+} from '@core/store/vendor/vendor.selectors';
 import { select, State } from '@ngrx/store';
 
 @Component({
@@ -12,6 +18,7 @@ export class VendorsComponent implements OnInit {
   constructor(private route: ActivatedRoute, private store: State<any>) {}
   vendorsLoading$ = this.store.pipe(select(selectVendorsLoading));
   vendors$ = this.store.pipe(select(selectVendorsGroups));
+  categories$ = this.store.pipe(select(selectCategories));
 
   membershipId: bigint;
   membershipType: number;

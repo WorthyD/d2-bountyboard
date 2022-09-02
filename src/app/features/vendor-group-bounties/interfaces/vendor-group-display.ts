@@ -1,6 +1,10 @@
-import { DestinyComponentsVendorsDestinyVendorGroup, DestinyDefinitionsDestinyVendorGroupDefinition } from "bungie-api-angular";
+import {
+  DestinyComponentsVendorsDestinyVendorGroup,
+  DestinyDefinitionsDestinyVendorGroupDefinition,
+  DestinyEntitiesVendorsDestinyVendorCategory
+} from 'bungie-api-angular';
 
-export interface VendorGroupDisplay{
+export interface VendorGroupDisplay {
   vendorGroup: DestinyComponentsVendorsDestinyVendorGroup;
   vendorDefinition: DestinyDefinitionsDestinyVendorGroupDefinition;
-}
+  }

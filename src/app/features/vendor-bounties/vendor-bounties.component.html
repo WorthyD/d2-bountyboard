@@ -1,15 +1,24 @@
-<h2>{{definition?.displayProperties.name}} - {{vendorHash}}</h2>
-<!-- <ng-container *ngIf="definition.displayProperties.name === 'Commandant Zavala'"> -->
-<ng-container *ngIf="definition?.displayProperties.name === 'Commander Zavala'">
+<ng-container *ngIf="vendorSales$ | async as vendorSales">
+  <h2>{{vendor.vendorDefinition?.displayProperties.name}} - {{vendor.vendorHash}}</h2>
+  <!-- <ng-container *ngIf="definition.displayProperties.name === 'Commandant Zavala'"> -->
+  <!-- <ng-container *ngIf="definition?.displayProperties.name === 'Commander Zavala'">
   <div style="height:400px;overflow:scroll">
     <pre>
-{{definition | json}}
 </pre>
   </div>
+</ng-container> -->
+<!-- <pre>
+{{vendorSales | json}}
+</pre> -->
+  <pre>{{vendor.vendorBountyIDs | json}}</pre>
+  <div *ngFor="let bountyId of vendor.vendorBountyIDs">
+    <app-vendor-bounty [saleItem]="vendorSales.saleItems[bountyId]"></app-vendor-bounty>
+  </div>
 </ng-container>
-  <pre>{{(itemIndexes$ | async) | json}}</pre>
+
 <!-- <pre>
 {{definition | json}}
+
 </pre>
 
   {

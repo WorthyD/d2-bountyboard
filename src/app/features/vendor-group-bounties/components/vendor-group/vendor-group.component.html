@@ -1,11 +1,12 @@
-<div>
+<div *ngIf="groupHasBounties">
   {{vendorGroupDisplay.vendorDefinition?.categoryName}} -
   {{vendorGroupDisplay.vendorDefinition?.order}}
 
-  <ul *ngIf="vendorGroupDisplay.vendorGroup.vendorHashes">
-    <ng-container *ngFor="let vendor of vendorGroupDisplay.vendorGroup.vendorHashes">
-      <li>
-        <app-vendor-bounties [vendorHash]="vendor.toString()"></app-vendor-bounties>
+
+  <ul>
+    <ng-container *ngFor="let vendor of vendorDisplay">
+      <li *ngIf="vendor.vendorBountyIDs.length > 0">
+        <app-vendor-bounties [vendor]="vendor"></app-vendor-bounties>
       </li>
 
 
